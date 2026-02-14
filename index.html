@@ -4,249 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ariq - Fullstack Web Developer</title>
-    
-    <style>
-        /* --- CSS STYLES --- */
-        
-        /* Reset dan Font */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-            overflow-x: hidden;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            cursor: pointer;
-            border: none;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            z-index: 100;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 2rem;
-        }
-        nav a {
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #667eea;
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 6rem 2rem 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero */
-        #hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            position: relative;
-        }
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.1);
-        }
-        #hero > * {
-            position: relative;
-            z-index: 1;
-        }
-        #hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        #hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-        }
-        .typewriter {
-            border-right: 3px solid white;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 50% { border-color: transparent; }
-            51%, 100% { border-color: white; }
-        }
-
-        /* About */
-        #about {
-            background: white;
-            color: #333;
-        }
-        #about img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 1.5rem;
-            border: 5px solid #667eea;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-        #about p {
-            max-width: 800px;
-        }
-
-        /* Skills */
-        #skills {
-            background: #f8f9fa;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        .skill {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .skill:hover {
-            transform: translateY(-10px);
-        }
-        .skill img {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
-            object-fit: contain;
-        }
-
-        /* Projects */
-        #projects {
-            background: white;
-        }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        .project {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            text-align: left;
-        }
-        .project:hover {
-            transform: translateY(-10px);
-        }
-        .project img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        .project h3 { margin-bottom: 0.5rem; }
-        .project p { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
-
-        /* Contact */
-        #contact {
-            background: #333;
-            color: white;
-        }
-        #contact form {
-            max-width: 600px;
-            width: 100%;
-            margin-top: 2rem;
-        }
-        #contact input, #contact textarea {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: #444;
-            color: #ffffff;
-        }
-        #contact input::placeholder, #contact textarea::placeholder {
-            color: #ccc;
-        }
-
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-        }
-        footer a { color: #667eea; }
-
-        /* Responsif */
-        @media (max-width: 768px) {
-            #hero h1 { font-size: 2.5rem; }
-            header { flex-direction: column; padding: 1rem; }
-            nav ul { margin-top: 1rem; }
-            nav ul li { margin: 0 10px; }
-            section { padding: 8rem 1rem 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
         <h2>Web Portofolio</h2>
         <nav>
@@ -267,7 +27,7 @@
     </section>
 
     <section id="about">
-        <img src="https://via.placeholder.com/200" alt="Your Photo">
+        <img src="img/foto.jpeg" alt="Your Photo">
         <h2>About Me</h2>
         <p>Lulusan S1 Teknik Informatika dari Universitas Jenderal Achmad Yani yang berdedikasi tinggi dengan fokus pada pengembangan Web (Full Stack). Memiliki pemahaman yang kuat dalam siklus pengembangan perangkat lunak, mulai dari perancangan antarmuka pengguna hingga pengelolaan basis data. Saya adalah pribadi yang adaptif, komunikatif, dan siap memberikan kontribusi teknis baik dalam posisi internship maupun full-time untuk membangun solusi digital yang efisien dan scalable.</p>
     </section>
@@ -276,17 +36,18 @@
         <h2>My Skills</h2>
         <div class="skills-grid">
             <div class="skill">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
+                <img src="img/HTML.png" alt="HTML">
                 <h3>HTML</h3>
             </div>
             <div class="skill">
-                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS">
+                <img src="img/CSS.png" alt="CSS">
                 <h3>CSS</h3>
             </div>
             <div class="skill">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+                <img src="img/JavaScript.png" alt="JavaScript">
                 <h3>JavaScript</h3>
             </div>
+            <!-- Tambahkan lebih banyak skills -->
         </div>
     </section>
 
@@ -294,14 +55,12 @@
         <h2>My Projects</h2>
         <div class="project-grid">
             <div class="project">
-                <img src="https://via.placeholder.com/400x250" alt="Project">
+                <img src="img/Portofolio.png" alt="Project">
                 <h3>Portfolio Site</h3>
-                <p>Situs web portofolio responsif yang menampilkan karya saya, dibangun menggunakan HTML, CSS, dan JavaScript murni. Termasuk Gambar dan Formulir Kontak.</p>
-                <div style="display: flex; gap: 10px;">
-                    <a href="https://muhamadariqirawan.github.io/CodingCamp-26Jan26-Muhamad-Ariq-Irawan/" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View Live</a>
-                    <a href="https://github.com/MuhamadAriqIrawan/CodingCamp-26Jan26-Muhamad-Ariq-Irawan.git" class="btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; background: #333;">GitHub</a>
-                </div>
+                <p>Situs web portofolio responsif yang menampilkan karya saya, dibangun menggunakan HTML, CSS, dan JavaScript murni. Termasuk Gambar dan Formulir Kontak. (Teknologi: HTML, CSS, JavaScript)</p>
+                <a href="https://muhamadariqirawan.github.io/CodingCamp-26Jan26-Muhamad-Ariq-Irawan/" class="btn">View Live</a> | <a href="https://github.com/MuhamadAriqIrawan/CodingCamp-26Jan26-Muhamad-Ariq-Irawan.git" class="btn">GitHub</a>
             </div>
+            <!-- Tambahkan lebih banyak proyek -->
         </div>
     </section>
 
@@ -320,55 +79,6 @@
         <p>&copy; 2026 Ariq. All rights reserved. | <a href="https://github.com/MuhamadAriqIrawan">GitHub</a></p>
     </footer>
 
-    <script>
-        /* --- JAVASCRIPT LOGIC --- */
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70, // Offset for fixed header
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Typewriter Effect
-        const typewriter = document.querySelector('.typewriter');
-        const text = "Ariq";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                typewriter.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 200);
-            }
-        }
-        
-        // Start typewriter after page load
-        window.onload = typeWriter;
-
-        // Fade-in on Scroll with Stagger
-        const sections = document.querySelectorAll('section');
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
